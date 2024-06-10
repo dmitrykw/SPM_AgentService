@@ -1,3 +1,5 @@
 is_global = true
 build_property.RootNamespace = SPM_AgentService_Linux
-build_property.ProjectDir = C:\Users\renkt\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\
+build_property.ProjectDir = C:\Users\renkt\Projects\SPM_AgentService\SPM_AgentService_Linux\SPM_AgentService_Linux\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -1182,11 +1182,11 @@
   "project": {
     "version": "1.0.0.3",
     "restore": {
-      "projectUniqueName": "C:\\Users\\renkt\\Projects\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\SPM_AgentService_Linux.csproj",
+      "projectUniqueName": "C:\\Users\\renkt\\Projects\\SPM_AgentService\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\SPM_AgentService_Linux.csproj",
       "projectName": "SPM_AgentService_Linux",
-      "projectPath": "C:\\Users\\renkt\\Projects\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\SPM_AgentService_Linux.csproj",
+      "projectPath": "C:\\Users\\renkt\\Projects\\SPM_AgentService\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\SPM_AgentService_Linux.csproj",
       "packagesPath": "C:\\Users\\renkt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\renkt\\Projects\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\obj\\",
+      "outputPath": "C:\\Users\\renkt\\Projects\\SPM_AgentService\\SPM_AgentService_Linux\\SPM_AgentService_Linux\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\renkt\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1197,6 +1197,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1209,6 +1210,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1258,8 +1264,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Newtonsoft.Json' 12.0.3 has a known high severity vulnerability, https://github.com/advisories/GHSA-5crp-9r3c-p9vr",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

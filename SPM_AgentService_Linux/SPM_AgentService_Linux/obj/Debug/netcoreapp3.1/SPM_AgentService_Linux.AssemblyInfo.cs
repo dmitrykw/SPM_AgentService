@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Renkti Software")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.3")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0.3+fceaf856289327db493452efb0cd038516d832ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("SPM_AgentService_Linux")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SPM_AgentService_Linux")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.3")]
