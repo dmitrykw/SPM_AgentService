@@ -1,0 +1,3 @@
+#Ignore files built by Visual Studio
+.vs/
+
