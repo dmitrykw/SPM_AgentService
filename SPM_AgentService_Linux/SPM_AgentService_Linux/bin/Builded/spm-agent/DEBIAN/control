@@ -1,0 +1,7 @@
+Package: spm-agent
+Version: 1.0.0.3
+Maintainer: Dmitry Koziakov <dmitry.kw@gmail.com>
+Architecture: all
+Section: misc
+Depends: bash (>=4.2), sysstat, sed
+Description: SPM Monitoring Agent Service

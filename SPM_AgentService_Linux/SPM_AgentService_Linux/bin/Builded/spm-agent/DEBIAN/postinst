@@ -1,0 +1,10 @@
+#!/bin/bash
+echo “Start configuring systemd”
+echo “Run: systemctl daemon-reload”
+systemctl daemon-reload
+echo “Run: systemctl start spm-agent”
+systemctl start spm-agent
+echo “Run: systemctl enable spm-agent”
+systemctl enable spm-agent
+echo “Configuration finished. Check status: sudo systemctl status spm-agent”
+exit 0

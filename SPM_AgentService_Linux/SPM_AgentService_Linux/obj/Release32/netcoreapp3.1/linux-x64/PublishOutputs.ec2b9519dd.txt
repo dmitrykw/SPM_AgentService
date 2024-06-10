@@ -1,0 +1,4 @@
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\bin\Release32\netcoreapp3.1\linux-x64\publish\appsettings.Development.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\bin\Release32\netcoreapp3.1\linux-x64\publish\appsettings.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\bin\Release32\netcoreapp3.1\linux-x64\publish\SPM_AgentService_Linux.pdb
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\bin\Release32\netcoreapp3.1\linux-x64\publish\SPM_AgentService_Linux

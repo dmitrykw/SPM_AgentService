@@ -1,0 +1,2 @@
+C:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.msi
+C:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.wixpdb

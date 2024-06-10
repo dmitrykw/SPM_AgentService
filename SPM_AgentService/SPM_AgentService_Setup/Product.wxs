@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The name of the product -->
+<?define Name = "SPM Monitoring system Agent" ?>
+<!-- The manufacturer, for setup package publisher and folder info -->
+<?define Manufacturer = "Renkti Software" ?>
+<!-- The version number of this setup package-->
+<?define Version = "1.0.0.3" ?>
+<!-- UpgradeCode must be unique and not changed once the first version of the program is installed. -->
+<?define UpgradeCode = "a800085d-ffcb-4f53-adce-08a11432817f" ?>
+<!-- The URL for add/remove programs -->
+<?define InfoURL="http://spm-monitoring.com/" ?>
+<!-- Listen Port Default Value. -->
+<?define Listen_Port = "4538" ?>
+<!-- Encryption Key Default Value. -->
+<?define EncryptionKey = "Insert here Encryption Key from your SPM Monitoring system App instance" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:firewall="http://schemas.microsoft.com/wix/FirewallExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+    <Product Id="*" Name="$(var.Name)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)" Version="$(var.Version)" Language="1033">
+        <!-- Create a folder inside Talk Sharp called Test Service -->
+        <Package InstallerVersion="300" Compressed="yes" />
+        <!-- Create a folder inside Talk Sharp called Test Service -->
+        <Media Id="1" Cabinet="SPM_AgentService.cab" EmbedCab="yes" />
+        <!-- Allow upgrades and prevent downgrades -->
+        <MajorUpgrade DowngradeErrorMessage="A later version of [ProductName] is already installed. Setup will now exit." />
+        <!-- Define the directory structure -->
+        <!-- Define icons (ID should not be longer than 18 chars and must end with ".exe") -->
+        <Icon Id="Icon.exe" SourceFile="app.ico" />
+        <!-- Set properties for add/remove programs -->
+        <Property Id="ARPPRODUCTICON" Value="Icon.exe" />
+        <Property Id="ARPHELPLINK" Value="$(var.InfoURL)" />
+        <!-- Remove repair -->
+        <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
+        <!-- Remove modify -->
+        <!-- <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" /> -->
+        <Property Id="LISTEN_PORT" Value="$(var.Listen_Port)" />
+        <Property Id="ENCRYPTIONKEY" Value="$(var.EncryptionKey)" />
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder">
+                <!-- Create a folder inside program files called Talk Sharp -->
+                <Directory Id="ROOTDIRECTORY" Name="$(var.Manufacturer)">
+                    <!-- Create a folder inside Talk Sharp called Test Service -->
+                    <Directory Id="INSTALLFOLDER" Name="$(var.Name)" />
+                </Directory>
+            </Directory>
+        </Directory>
+        <!-- The files inside this DirectoryRef are linked to the Test Service directory via INSTALLFOLDER -->
+        <DirectoryRef Id="INSTALLFOLDER">
+            <!-- Create a single component which is the TestService.exe file -->
+            <Component Id="$(var.SPM_AgentService.TargetFileName)" Guid="$(var.UpgradeCode)">
+                <!-- Copies the TestService.exe file using the project reference preprocessor variables -->
+                <File Id="$(var.SPM_AgentService.TargetFileName)" Source="$(var.SPM_AgentService.TargetPath)" KeyPath="yes" />
+                <!-- Remove all files from the INSTALLFOLDER on uninstall -->
+                <RemoveFile Id="ALLFILES" Name="*.*" On="both" />
+                <!-- Tell WiX to install the Service Arguments - HERE IS OUR ENCRYPTION KEY   -->
+                <ServiceInstall Id="ServiceInstaller" Type="ownProcess" Name="SPM_AgentService" DisplayName="$(var.Name)" Description="SPM Monitoring system Agent Service is using for getting information about CPU load, Available Memory, free disk space and etc." Start="auto" Arguments="[LISTEN_PORT] [ENCRYPTIONKEY]" ErrorControl="normal" />
+                <!-- Tell WiX to start the Service -->
+                <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="SPM_AgentService" Wait="yes" />
+                <firewall:FirewallException Id="SPM_Agent_FW_Rule" Name="SPM Monitoring system Agent" Port="[LISTEN_PORT]" Protocol="tcp" Scope="any" Description="This is the rule for accessing to SPM Monitoring system Agent Service (Monitoring local computer CPU load, available memory... etc)." Profile="all" IgnoreFailure="yes" />
+            </Component>
+            <Component Id="Newtonsoft.Json.dll" Guid="a50b7683-a7f5-4827-82bd-c98db049b09e">
+                <File Id="Newtonsoft.Json.dll" Source="..\SPM_AgentService\bin\Release\Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+        <!-- Tell WiX to install the files -->
+        <Feature Id="SPM_AgentService" Title="SPM Monitoring system Agent" Level="1">
+            <ComponentRef Id="$(var.SPM_AgentService.TargetFileName)" />
+            <ComponentRef Id="Newtonsoft.Json.dll" />
+        </Feature>
+        <Binary Id="MainLogo" SourceFile="logo.png" />
+        <UI>
+            <Dialog Id="encryption_key_dialog" Width="500" Height="130" Title="Set Agent Service Startup Parameters">
+                <Control Type="Text" Id="label_text" Width="458" Height="15" X="22" Y="19" Text="Please enter the  ENCRYPTION KEY  from The SPM Monitoring App (this key will be used for all transmitted data encryption)" />
+                <Control Type="Text" Id="label_text1" Width="74" Height="20" X="360" Y="81" Text="Specify Listen port:" />
+                <Control Type="Text" Id="label_text2" Width="117" Height="12" X="368" Y="104" Text="(not recommended to change it)" />
+                <Control Type="Edit" Id="input_key" Width="468" Height="15" X="19" Y="45" Default="yes" Property="ENCRYPTIONKEY" />
+                <Control Type="Edit" Id="input_port" Width="50" Height="15" X="440" Y="79" Property="LISTEN_PORT" />
+                <Control Type="PushButton" Id="Ok_button" Width="56" Height="17" X="218" Y="82" Text="!(loc.WixUINext)" Cancel="yes">
+                    <Publish Event="SetTargetPath" Value="[ENCRYPTIONKEY]" />
+                    <Publish Event="SetTargetPath" Value="[LISTEN_PORT]" />
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Type="Bitmap" Id="logo" Width="48" Height="46" X="22" Y="71" Text="MainLogo" />
+            </Dialog>
+            <Dialog Id="firewall_dialog" Width="300" Height="110" Title="Firewall Exceptions">
+                <Control Type="Text" Id="label_text" Width="243" Height="9" X="41" Y="11" Text="Don`t forget to check Firewall exceptions for this Agent Service." />
+                <Control Type="Text" Id="label_text2" Width="337" Height="14" X="15" Y="34" Text="Installation wizard will try to create Firewall exceptions for port [LISTEN_PORT] by itselft." />
+                <Control Type="PushButton" Id="Ok_button" Width="56" Height="17" X="128" Y="71" Text="OK" Cancel="no">
+                    <Publish Event="EndDialog" Value="Return">1</Publish>
+                </Control>
+                <Control Type="Bitmap" Id="logo" Width="48" Height="46" X="11" Y="56" Text="MainLogo" />
+            </Dialog>
+            <UIRef Id="WixUI_Minimal" />
+        </UI>
+        <InstallUISequence>
+            <Show Dialog="encryption_key_dialog" Before="CostFinalize" />
+            <Show Dialog="firewall_dialog" After="ExecuteAction" />
+        </InstallUISequence>
+
+      <PropertyRef Id="WIX_IS_NETFRAMEWORK_45_OR_LATER_INSTALLED"/>
+      <Condition Message="SPM Monitoring system Agent Service requires .NET Framework 4.5 or Later. Please install the .NET Framework then run this installer again.">
+        <![CDATA[Installed OR WIX_IS_NETFRAMEWORK_45_OR_LATER_INSTALLED]]>
+      </Condition>
+    </Product>
+</Wix>

@@ -1,0 +1,46 @@
+Requirements: Tested on Ubuntu 20.04/20.10 / Ubuntu 18.04/18.10/ 16.04(amd64) / Debian 10.8
+
+=========================================================================
+Full Manual : https://spm-monitoring.com/linux-agent-installation-manual/
+=========================================================================
+
+1.First update your package list:
+sudo apt update
+
+2.Second upgrade your packages:
+sudo apt upgrade
+
+3.In your home directory – download installation .deb:
+wget https://spm-monitoring.com/SPM_Agent/SPM_Agent_Linux/spm-agent.deb
+
+4.Run installation:
+sudo apt install ./spm-agent.deb
+
+5.Click Yes when you asked for installing package dependencies.
+
+6.Now package successfully installed and started. But not configured.
+
+7.Stop the application daemon:
+sudo systemctl stop spm-agent
+
+8.Go to configuration file:
+sudo nano /etc/spm-agent.conf
+
+9.Put the encryption key from SPM Monitoring options to the encryption_key filed.
+
+10.Optionally you can change listen port in listen_port filed.
+
+11.Start application service again:
+sudo systemctl start spm-agent
+
+12.And check its status:
+sudo systemctl status spm-agent
+
+13.If you are using firewall, – add exception:
+sudo ufw allow 4538/tcp
+
+
+
+
+
+Application depends of iostat package (using for hdd drives load measurement) and will install it automatically if need.

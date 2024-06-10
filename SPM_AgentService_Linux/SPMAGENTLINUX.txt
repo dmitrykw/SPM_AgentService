@@ -1,0 +1,45 @@
+1. Создать .net core приложение worker
+
+2. Скомпилировать dotnet publish -c Release -o publish -r linux-x64
+dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained true
+*** dotnet publish -c Release -r linux-x64 -p:PublishSingleFile=true --self-contained true
+
+3. Скопировать файлы в каталог файлы /opt/spm-agent/
+
+3. Права запуска на файл  sudo chmod 755 /home/renkti/spm-agent/bin/SPM_AgentService_Linux
+						sudo chmod 777 spm-agent.deb
+
+4. Создать файл sudo nano /etc/systemd/system/spm-agent.service
+[Unit]
+Description=SPM Monitoring Agent Service
+[Service]
+ExecStart=/opt/spm-agent/SPM_AgentService_Linux
+[Install]
+WantedBy=multi-user.target
+
+5. sudo systemctl daemon-reload
+
+6. sudo systemctl start spm-agent
+
+7. sudo systemctl status spm-agent
+
+8. sudo systemctl enable spm-agent
+
+9. journalctl -u spm-agent
+
+
+10. установаить fakeroot - sudo apt install fakeroot
+11. Создание .deb пакета - sudo fakeroot dpkg-deb --build spm-agent
+12. Установить deb пакет - sudo dpkg -i spm-agent.deb
+			*** sudo chmod 777 spm-agent.deb
+			*** sudo apt install ./spm-agent.deb
+
+
+wget https://spm-monitoring.com/SPM_Agent/SPM_Agent_Linux/spm-agent.deb
+
+dd if=/dev/urandom | bzip2 -9 > /dev/null
+top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}'
+df -k | grep -vE '^Filesystem|tmpfs|cdrom|mmcblk0p1' | awk '{print $1,$2,$3,$4,$6}'
+iostat -d -x -N -y 10 1 /dev/mapper/ubuntu--vg-ubuntu--lv | awk '{print $23}' | grep -v "%util" | grep -v '^$'
+iostat -d -x -N -y 10 1 /dev/sda2 | sed '1d' | grep -v '^$' | awk '{print $NF}' | grep -v '%util'
+iostat -c 1 2 | sed '/^\s*$/d' | tail -n 1 | awk '{print $NF}'

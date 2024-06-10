@@ -1,0 +1,8 @@
+C:\Users\renkt\OneDrive\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.msi
+C:\Users\renkt\OneDrive\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.wixpdb
+obj\Release\Product.wixobj
+obj\Release\SPM_AgentService_Setup.wixproj.BindContentsFileListnull.txt
+obj\Release\SPM_AgentService_Setup.wixproj.BindOutputsFileListnull.txt
+obj\Release\SPM_AgentService_Setup.wixproj.BindBuiltOutputsFileListnull.txt
+C:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.msi
+C:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService\SPM_AgentService_Setup\bin\Release\SPM_AgentService_Setup.wixpdb

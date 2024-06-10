@@ -1,0 +1,3 @@
+#!/bin/bash
+#echo “ Pre-install Script begin”
+exit 0

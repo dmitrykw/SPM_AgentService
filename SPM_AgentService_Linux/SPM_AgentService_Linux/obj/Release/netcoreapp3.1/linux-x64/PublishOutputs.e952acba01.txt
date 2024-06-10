@@ -1,0 +1,8 @@
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\appsettings.Development.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\appsettings.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\publish\appsettings.Development.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\publish\appsettings.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\publish\publish\appsettings.Development.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\publish\publish\appsettings.json
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\SPM_AgentService_Linux.pdb
+c:\Users\renkt\Documents\Visual Studio 2019\Projects\SPM_AgentService_Linux\SPM_AgentService_Linux\publish\SPM_AgentService_Linux

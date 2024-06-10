@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "SPM_AgentService_Linux": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+[Unit]
+Description=SPM Monitoring Agent Service
+[Service]
+ExecStart=/bin/SPM_AgentService_Linux
+[Install]
+WantedBy=multi-user.target
